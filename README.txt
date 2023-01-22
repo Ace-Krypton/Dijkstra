@@ -1,6 +1,8 @@
 Problem
 
 Given a weighted, directed graph represented by an adjacency matrix, find the shortest path from a start vertex to a target vertex using Dijkstra's algorithm.
+
+
 Solution
 
 The solution is implemented in C++. The program includes a Graph class that uses a 2D array to represent the graph and provides a method path_finder to find the shortest path from a start vertex to a target vertex.
