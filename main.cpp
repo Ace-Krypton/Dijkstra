@@ -39,7 +39,7 @@ public:
         std::int16_t min = std::numeric_limits<std::int16_t>::max();
         std::int16_t min_index;
 
-        for (std::int16_t v = 0x0; v < vertices; v++) {
+        for (std::int16_t v {0x0}; v < vertices; v++) {
             if (!visited[v] && dist[v] <= min) {
                 min = dist[v];
                 min_index = v;
@@ -55,11 +55,11 @@ public:
 
         dist[start_vertex] = 0x0;
 
-        for (std::int16_t i = 0x0; i < vertices; i++) {
+        for (std::int16_t i {0x0}; i < vertices; i++) {
             std::int16_t u = min_distance(dist, visited);
             visited[u] = true;
 
-            for (std::int16_t v = 0x0; v < vertices; v++) {
+            for (std::int16_t v {0x0}; v < vertices; v++) {
                 if (!visited[v] && adjacency_matrix[u][v] != -1 && dist[u] != std::numeric_limits<std::int16_t>::max()
                     && dist[u] + adjacency_matrix[u][v] < dist[v]) {
                     dist[v] = static_cast<std::int16_t>(dist[u] + adjacency_matrix[u][v]);
