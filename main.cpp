@@ -4,8 +4,6 @@
 #include <algorithm>
 
 #define A 0x0
-#define B 0x1
-#define C 0x2
 #define D 0x3
 
 class Graph {
@@ -18,18 +16,18 @@ public:
         this->vertices = vertices;
         this->adjacency_matrix = new std::int16_t*[vertices];
 
-        for (std::size_t row {0x0}; row < vertices; ++row) {
+        for (std::int16_t row {0x0}; row < vertices; ++row) {
             this->adjacency_matrix[row] = new std::int16_t[vertices];
 
-            for (std::size_t column {0x0}; column < vertices; ++column) {
+            for (std::int16_t column {0x0}; column < vertices; ++column) {
                 this->adjacency_matrix[row][column] = adjacency_matrix[row][column];
             }
         }
     }
 
     [[maybe_unused]] auto print_matrix() -> void {
-        for (std::size_t row {0x0}; row < vertices; ++row) {
-            for (std::size_t column {0x0}; column < vertices; ++column) {
+        for (std::int16_t row {0x0}; row < vertices; ++row) {
+            for (std::int16_t column {0x0}; column < vertices; ++column) {
                 std::cout << adjacency_matrix[row][column] << " ";
             }
 
@@ -55,13 +53,13 @@ public:
         std::vector<std::int16_t> prev(vertices, -1);
         std::vector<bool> visited(vertices, false);
 
-        dist[start_vertex] = 0;
+        dist[start_vertex] = 0x0;
 
-        for (std::int16_t i = 0; i < vertices; i++) {
+        for (std::int16_t i = 0x0; i < vertices; i++) {
             std::int16_t u = min_distance(dist, visited);
             visited[u] = true;
 
-            for (std::int16_t v = 0; v < vertices; v++) {
+            for (std::int16_t v = 0x0; v < vertices; v++) {
                 if (!visited[v] && adjacency_matrix[u][v] != -1 && dist[u] != std::numeric_limits<std::int16_t>::max()
                     && dist[u] + adjacency_matrix[u][v] < dist[v]) {
                     dist[v] = static_cast<std::int16_t>(dist[u] + adjacency_matrix[u][v]);
@@ -89,8 +87,6 @@ auto main() -> int {
     };
 
     Graph graph(vertices, adjacency_matrix);
-    graph.path_finder(A, B);
-    graph.path_finder(A, C);
-    graph.path_finder(A, D);
+    for (std::int16_t i {A + 0x1}; i <= D; ++i) graph.path_finder(A, i);
     return 0x0;
 }
