@@ -64,7 +64,7 @@ public:
             for (std::int16_t v = 0; v < vertices; v++) {
                 if (!visited[v] && adjacency_matrix[u][v] != -1 && dist[u] != std::numeric_limits<std::int16_t>::max()
                     && dist[u] + adjacency_matrix[u][v] < dist[v]) {
-                    dist[v] = dist[u] + adjacency_matrix[u][v];
+                    dist[v] = static_cast<std::int16_t>(dist[u] + adjacency_matrix[u][v]);
                     prev[v] = u;
                 }
             }
